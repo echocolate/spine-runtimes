@@ -46,21 +46,43 @@ bool CoinExample::init () {
 //	skeletonNode->setAnimation(0, "animation", true);
 //    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("cha_1571.plist");
 //    skeletonNode = SkeletonAnimation::createWithJsonFile("cha_1571.json", "", 1.0f);
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ceshi/1/s_hua_1.plist");
-    skeletonNode = SkeletonAnimation::createWithJsonFile("ceshi/7/hua_7.json", "", 1.0f);
+//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ceshi/1/s_hua_1.plist");
+//    skeletonNode = SkeletonAnimation::createWithJsonFile("ceshi/10/hua_11.json", "", 0.5f);
+//    spine::SkeletonAnimation* skeletonNode2 = SkeletonAnimation::createWithJsonFile("ceshi/10/hua_11.json", "", 0.5f);
+//    spine::SkeletonAnimation* skeletonNode3 = SkeletonAnimation::createWithJsonFile("ceshi/10/hua_11.json", "", 0.5f);
     
 //    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_fight_0973_attack_1.plist");
 //    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_fight_common_1.plist");
 //    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_fight_common_2.plist");
 //    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_common.plist");
-//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_cha_1549.plist");
-    //skeletonNode = SkeletonAnimation::createWithJsonFile("cha_1549.json", "", 1.0f);
-
-    skeletonNode->setAnimation(0, "animation", true);
-
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("cha_1649.plist");
+    skeletonNode = SkeletonAnimation::createWithJsonFile("cha_1649.json", "", 1.0f);
     int sh = skeletonNode->getBoundingBox().size.height;
+    
+    skeletonNode->setAnimation(0, "stand", true);
+    //skeletonNode->addAnimation(0, "attack", true, 0);
 	skeletonNode->setPosition(Vec2(_contentSize.width / 2, _contentSize.height / 2- sh/2));
 	addChild(skeletonNode);
+    //skeletonNode->scheduleUpdate();
+    
+    Sprite *sp = Sprite::createWithSpriteFrameName("cha_1649/head.png");
+    sp->setPosition(Vec2(80, 150));
+//    sp->setFlippedX(true);
+//    sp->setRotation(100);
+    addChild(sp);
+    
+//    skeletonNode2->setAnimation(0, "animation2", true);
+//    skeletonNode2->update(1.0);
+//    float du = skeletonNode2->findAnimation("animation")->getDuration();
+//    printf("animation duration:%f", du);
+//    //skeletonNode->addAnimation(0, "animation2", true, 0);
+//    skeletonNode2->setPosition(Vec2(_contentSize.width / 2, _contentSize.height / 2- sh/2));
+//    addChild(skeletonNode2);
+//
+//    skeletonNode3->setAnimation(0, "animation", true);
+//    skeletonNode3->addAnimation(0, "animation2", true, 0);
+//    skeletonNode3->setPosition(Vec2(_contentSize.width * 3 / 4, _contentSize.height / 2- sh/2));
+//    addChild(skeletonNode3);
 
 	scheduleUpdate();
 
