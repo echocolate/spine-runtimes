@@ -67,7 +67,7 @@ RegionAttachment *AtlasAttachmentLoader::newRegionAttachment(Skin &skin, const S
 	RegionAttachment *attachmentP = new(__FILE__, __LINE__) RegionAttachment(name);
 
 	RegionAttachment &attachment = *attachmentP;
-	attachment.setRendererObject(regionP);
+	attachment.setRendererObject(region);
 	attachment.setUVs(spriteQuad.bl.texCoords.u, spriteQuad.tr.texCoords.v, spriteQuad.tr.texCoords.u, spriteQuad.bl.texCoords.v, 0);
 	attachment._regionOffsetX = 0;
 	attachment._regionOffsetY = 0;

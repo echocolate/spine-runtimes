@@ -1,0 +1,300 @@
+
+cha_1571.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cha_1571/back_cope_1
+  rotate: false
+  xy: 156, 103
+  size: 43, 85
+  orig: 43, 85
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_10
+  rotate: true
+  xy: 476, 366
+  size: 41, 31
+  orig: 41, 31
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_11
+  rotate: false
+  xy: 156, 190
+  size: 50, 87
+  orig: 50, 87
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_12
+  rotate: false
+  xy: 271, 361
+  size: 66, 51
+  orig: 66, 51
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_13
+  rotate: false
+  xy: 2, 125
+  size: 77, 154
+  orig: 77, 154
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_14
+  rotate: false
+  xy: 360, 401
+  size: 77, 71
+  orig: 77, 71
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_15
+  rotate: false
+  xy: 81, 106
+  size: 73, 74
+  orig: 73, 74
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_16
+  rotate: true
+  xy: 476, 409
+  size: 54, 34
+  orig: 54, 34
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_2
+  rotate: false
+  xy: 248, 205
+  size: 29, 46
+  orig: 29, 46
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_3
+  rotate: true
+  xy: 339, 372
+  size: 27, 88
+  orig: 27, 88
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_4
+  rotate: false
+  xy: 302, 289
+  size: 38, 39
+  orig: 38, 39
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_5
+  rotate: true
+  xy: 271, 474
+  size: 36, 167
+  orig: 36, 167
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_6
+  rotate: false
+  xy: 135, 41
+  size: 31, 60
+  orig: 31, 60
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_7
+  rotate: false
+  xy: 168, 45
+  size: 29, 56
+  orig: 29, 56
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_8
+  rotate: false
+  xy: 291, 254
+  size: 42, 33
+  orig: 42, 33
+  offset: 0, 0
+  index: -1
+cha_1571/back_cope_9
+  rotate: true
+  xy: 157, 279
+  size: 50, 88
+  orig: 50, 88
+  offset: 0, 0
+  index: -1
+cha_1571/brow
+  rotate: false
+  xy: 302, 227
+  size: 24, 25
+  orig: 24, 25
+  offset: 0, 0
+  index: -1
+cha_1571/ear
+  rotate: true
+  xy: 271, 330
+  size: 29, 63
+  orig: 29, 63
+  offset: 0, 0
+  index: -1
+cha_1571/eye
+  rotate: false
+  xy: 248, 180
+  size: 30, 23
+  orig: 30, 23
+  offset: 0, 0
+  index: -1
+cha_1571/eye_close
+  rotate: true
+  xy: 373, 348
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: -1
+cha_1571/front_waist
+  rotate: false
+  xy: 157, 331
+  size: 77, 75
+  orig: 77, 75
+  offset: 0, 0
+  index: -1
+cha_1571/hair
+  rotate: false
+  xy: 2, 281
+  size: 153, 229
+  orig: 153, 229
+  offset: 0, 0
+  index: -1
+cha_1571/hair_back
+  rotate: true
+  xy: 339, 353
+  size: 17, 32
+  orig: 17, 32
+  offset: 0, 0
+  index: -1
+cha_1571/head
+  rotate: false
+  xy: 81, 182
+  size: 73, 97
+  orig: 73, 97
+  offset: 0, 0
+  index: -1
+cha_1571/l_arm
+  rotate: true
+  xy: 440, 465
+  size: 45, 57
+  orig: 45, 57
+  offset: 0, 0
+  index: -1
+cha_1571/l_foot
+  rotate: false
+  xy: 135, 6
+  size: 31, 33
+  orig: 31, 33
+  offset: 0, 0
+  index: -1
+cha_1571/l_hand
+  rotate: false
+  xy: 401, 348
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+cha_1571/l_lower_leg
+  rotate: false
+  xy: 201, 105
+  size: 46, 71
+  orig: 46, 71
+  offset: 0, 0
+  index: -1
+cha_1571/l_shoulder
+  rotate: true
+  xy: 247, 293
+  size: 35, 53
+  orig: 35, 53
+  offset: 0, 0
+  index: -1
+cha_1571/l_shoulder_1
+  rotate: false
+  xy: 249, 108
+  size: 28, 31
+  orig: 28, 31
+  offset: 0, 0
+  index: -1
+cha_1571/l_upper_leg
+  rotate: true
+  xy: 271, 414
+  size: 58, 87
+  orig: 58, 87
+  offset: 0, 0
+  index: -1
+cha_1571/r_arm
+  rotate: true
+  xy: 236, 335
+  size: 71, 33
+  orig: 71, 33
+  offset: 0, 0
+  index: -1
+cha_1571/r_foot
+  rotate: true
+  xy: 249, 141
+  size: 37, 30
+  orig: 37, 30
+  offset: 0, 0
+  index: -1
+cha_1571/r_hand
+  rotate: true
+  xy: 279, 214
+  size: 37, 21
+  orig: 37, 21
+  offset: 0, 0
+  index: -1
+cha_1571/r_lower_leg
+  rotate: false
+  xy: 439, 385
+  size: 35, 78
+  orig: 35, 78
+  offset: 0, 0
+  index: -1
+cha_1571/r_shoulder
+  rotate: false
+  xy: 69, 13
+  size: 63, 21
+  orig: 63, 21
+  offset: 0, 0
+  index: -1
+cha_1571/r_shoulder_1
+  rotate: true
+  xy: 168, 2
+  size: 41, 40
+  orig: 41, 40
+  offset: 0, 0
+  index: -1
+cha_1571/r_upper_leg
+  rotate: false
+  xy: 208, 178
+  size: 38, 99
+  orig: 38, 99
+  offset: 0, 0
+  index: -1
+cha_1571/r_waist_1
+  rotate: false
+  xy: 69, 36
+  size: 64, 68
+  orig: 64, 68
+  offset: 0, 0
+  index: -1
+cha_1571/r_waist_2
+  rotate: false
+  xy: 248, 253
+  size: 41, 38
+  orig: 41, 38
+  offset: 0, 0
+  index: -1
+cha_1571/torso
+  rotate: false
+  xy: 2, 17
+  size: 65, 106
+  orig: 65, 106
+  offset: 0, 0
+  index: -1
+cha_1571/weapon
+  rotate: false
+  xy: 157, 408
+  size: 112, 102
+  orig: 112, 102
+  offset: 0, 0
+  index: -1

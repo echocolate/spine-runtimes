@@ -1,0 +1,52 @@
+{
+"skeleton": {
+	"hash": "bR4gkAWBvl0UhYUEK/qFiwQOHmc",
+	"spine": "3.8.84",
+	"x": -136.59,
+	"y": -0.47,
+	"width": 268,
+	"height": 344,
+	"images": "./hua/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "gen", "parent": "root", "length": 96.01, "rotation": 96.48, "x": -3.25, "y": 8.26 },
+	{ "name": "hua", "parent": "gen", "length": 195.83, "rotation": -8.86, "x": 98.51, "y": -1.92 }
+],
+"slots": [
+	{ "name": "gen", "bone": "gen", "attachment": "gen" },
+	{ "name": "hua", "bone": "hua", "attachment": "hua" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"gen": {
+				"gen": { "x": 49.24, "y": 5.81, "rotation": -96.48, "width": 56, "height": 114 }
+			},
+			"hua": {
+				"hua": { "x": 113.98, "y": -5.15, "rotation": -87.62, "width": 268, "height": 247 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"gen": {
+				"color": [
+					{ "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 2, "color": "ffffff00" }
+				]
+			},
+			"hua": {
+				"color": [
+					{ "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 2, "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}

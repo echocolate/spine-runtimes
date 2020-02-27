@@ -32,7 +32,7 @@
 #include <vector>
 #include <string>
 
-#include "IKExample.h"
+#include "CoinExample.h"
 #include <spine/spine-cocos2dx.h>
 #include <spine/Debug.h>
 #include "AppMacros.h"
@@ -110,7 +110,7 @@ bool AppDelegate::applicationDidFinishLaunching () {
 	
 	// create a scene. it's an autorelease object
 	//auto scene = RaptorExample::scene();
-	auto scene = IKExample::scene();
+	auto scene = CoinExample::scene();
 
 	// run
 	director->runWithScene(scene);

@@ -42,10 +42,24 @@ Scene* CoinExample::scene () {
 bool CoinExample::init () {
 	if (!LayerColor::initWithColor(Color4B(128, 128, 128, 255))) return false;
 
-	skeletonNode = SkeletonAnimation::createWithBinaryFile("coin-pro.skel", "coin.atlas", 1);
-	skeletonNode->setAnimation(0, "animation", true);
+//	skeletonNode = SkeletonAnimation::createWithBinaryFile("coin-pro.skel", "coin.atlas", 1);
+//	skeletonNode->setAnimation(0, "animation", true);
+//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("cha_1571.plist");
+//    skeletonNode = SkeletonAnimation::createWithJsonFile("cha_1571.json", "", 1.0f);
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ceshi/1/s_hua_1.plist");
+    skeletonNode = SkeletonAnimation::createWithJsonFile("ceshi/7/hua_7.json", "", 1.0f);
+    
+//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_fight_0973_attack_1.plist");
+//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_fight_common_1.plist");
+//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_fight_common_2.plist");
+//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_common.plist");
+//    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_cha_1549.plist");
+    //skeletonNode = SkeletonAnimation::createWithJsonFile("cha_1549.json", "", 1.0f);
 
-	skeletonNode->setPosition(Vec2(_contentSize.width / 2, _contentSize.height / 2));
+    skeletonNode->setAnimation(0, "animation", true);
+
+    int sh = skeletonNode->getBoundingBox().size.height;
+	skeletonNode->setPosition(Vec2(_contentSize.width / 2, _contentSize.height / 2- sh/2));
 	addChild(skeletonNode);
 
 	scheduleUpdate();

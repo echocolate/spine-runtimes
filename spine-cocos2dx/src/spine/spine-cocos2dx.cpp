@@ -41,8 +41,9 @@ static void deleteAttachmentVertices (void* vertices) {
 static unsigned short quadTriangles[6] = {0, 1, 2, 2, 3, 0};
 
 static void setAttachmentVertices(RegionAttachment* attachment) {
-	AtlasRegion* region = (AtlasRegion*)attachment->getRendererObject();
-	AttachmentVertices* attachmentVertices = new AttachmentVertices((Texture2D*)region->page->getRendererObject(), 4, quadTriangles, 6);
+	//AtlasRegion* region = (AtlasRegion*)attachment->getRendererObject();
+    Sprite* region = (Sprite*)attachment->getRendererObject();
+	AttachmentVertices* attachmentVertices = new AttachmentVertices((Texture2D*)region->getTexture(), 4, quadTriangles, 6);
 	V3F_C4B_T2F* vertices = attachmentVertices->_triangles->verts;
 	for (int i = 0, ii = 0; i < 4; ++i, ii += 2) {
 		vertices[i].texCoords.u = attachment->getUVs()[ii];
@@ -52,8 +53,9 @@ static void setAttachmentVertices(RegionAttachment* attachment) {
 }
 
 static void setAttachmentVertices(MeshAttachment* attachment) {
-	AtlasRegion* region = (AtlasRegion*)attachment->getRendererObject();
-	AttachmentVertices* attachmentVertices = new AttachmentVertices((Texture2D*)region->page->getRendererObject(),
+	//AtlasRegion* region = (AtlasRegion*)attachment->getRendererObject();
+    Sprite* region = (Sprite*)attachment->getRendererObject();
+	AttachmentVertices* attachmentVertices = new AttachmentVertices((Texture2D*)region->getTexture(),
 																	attachment->getWorldVerticesLength() >> 1, attachment->getTriangles().buffer(), attachment->getTriangles().size());
 	V3F_C4B_T2F* vertices = attachmentVertices->_triangles->verts;
 	for (int i = 0, ii = 0, nn = attachment->getWorldVerticesLength(); ii < nn; ++i, ii += 2) {

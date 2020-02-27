@@ -1,0 +1,55 @@
+{
+"skeleton": {
+	"hash": "UKRrByOyl+Y6sWUUjq3hqk6++vU",
+	"spine": "3.8.84",
+	"x": -136.59,
+	"y": -0.47,
+	"width": 268,
+	"height": 344,
+	"images": "./hua/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "gen", "parent": "root", "length": 96.01, "rotation": 96.48, "x": -3.25, "y": 8.26 },
+	{ "name": "hua", "parent": "gen", "length": 195.83, "rotation": -8.86, "x": 98.51, "y": -1.92 }
+],
+"slots": [
+	{ "name": "gen", "bone": "gen", "attachment": "gen" },
+	{ "name": "hua", "bone": "hua", "attachment": "hua" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"gen": {
+				"gen": { "x": 49.24, "y": 5.81, "rotation": -96.48, "width": 56, "height": 114 }
+			},
+			"hua": {
+				"hua": { "x": 113.98, "y": -5.15, "rotation": -87.62, "width": 268, "height": 247 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"gen": {
+				"rotate": [
+					{ "angle": -12.41, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1, "angle": 19.18, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2, "angle": -12.41 }
+				]
+			},
+			"hua": {
+				"rotate": [
+					{ "angle": 3.38, "curve": 0.375, "c2": 0.5, "c3": 0.75 },
+					{ "time": 0.5, "angle": -12.41, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.5, "angle": 19.18, "curve": 0.25, "c3": 0.625, "c4": 0.5 },
+					{ "time": 2, "angle": 3.38 }
+				]
+			}
+		}
+	}
+}
+}

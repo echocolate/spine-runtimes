@@ -1,0 +1,104 @@
+
+phoenix1.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+phoenix1/close_eye
+  rotate: false
+  xy: 472, 116
+  size: 34, 39
+  orig: 34, 39
+  offset: 0, 0
+  index: -1
+phoenix1/l_foot
+  rotate: true
+  xy: 318, 44
+  size: 103, 45
+  orig: 103, 45
+  offset: 0, 0
+  index: -1
+phoenix1/l_lower_leg
+  rotate: true
+  xy: 472, 157
+  size: 25, 38
+  orig: 25, 38
+  offset: 0, 0
+  index: -1
+phoenix1/l_upper_leg
+  rotate: false
+  xy: 365, 66
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: -1
+phoenix1/l_wing
+  rotate: true
+  xy: 380, 184
+  size: 70, 119
+  orig: 70, 119
+  offset: 0, 0
+  index: -1
+phoenix1/r_foot
+  rotate: false
+  xy: 458, 88
+  size: 44, 26
+  orig: 44, 26
+  offset: 0, 0
+  index: -1
+phoenix1/r_foot_01
+  rotate: true
+  xy: 269, 12
+  size: 28, 47
+  orig: 28, 47
+  offset: 0, 0
+  index: -1
+phoenix1/r_foot_02
+  rotate: false
+  xy: 427, 78
+  size: 29, 47
+  orig: 29, 47
+  offset: 0, 0
+  index: -1
+phoenix1/r_foot_03
+  rotate: true
+  xy: 214, 19
+  size: 21, 53
+  orig: 21, 53
+  offset: 0, 0
+  index: -1
+phoenix1/r_lower_leg
+  rotate: true
+  xy: 318, 2
+  size: 40, 63
+  orig: 40, 63
+  offset: 0, 0
+  index: -1
+phoenix1/r_upper_leg
+  rotate: false
+  xy: 380, 127
+  size: 90, 55
+  orig: 90, 55
+  offset: 0, 0
+  index: -1
+phoenix1/r_wing
+  rotate: false
+  xy: 214, 149
+  size: 164, 105
+  orig: 164, 105
+  offset: 0, 0
+  index: -1
+phoenix1/tail
+  rotate: false
+  xy: 214, 42
+  size: 102, 105
+  orig: 102, 105
+  offset: 0, 0
+  index: -1
+phoenix1/torso
+  rotate: false
+  xy: 2, 19
+  size: 210, 235
+  orig: 210, 235
+  offset: 0, 0
+  index: -1
