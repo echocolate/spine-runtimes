@@ -40,60 +40,73 @@
 #include <spine/PointAttachment.h>
 #include <spine/ClippingAttachment.h>
 
+#include "cocos2d.h"
 #include <spine/Atlas.h>
+USING_NS_CC;
 
 namespace spine {
 RTTI_IMPL(AtlasAttachmentLoader, AttachmentLoader)
 
-AtlasAttachmentLoader::AtlasAttachmentLoader(Atlas *atlas) : AttachmentLoader(), _atlas(atlas) {
+AtlasAttachmentLoader::AtlasAttachmentLoader(Atlas *atlas) : AttachmentLoader(){
 }
 
 RegionAttachment *AtlasAttachmentLoader::newRegionAttachment(Skin &skin, const String &name, const String &path) {
 	SP_UNUSED(skin);
 
-	AtlasRegion *regionP = findRegion(path);
-	if (!regionP) return NULL;
-
-	AtlasRegion &region = *regionP;
+	//AtlasRegion *regionP = findRegion(path);
+	//if (!regionP) return NULL;
+    std::string spritePath = std::string(path.buffer()) + ".png";
+    Sprite* region = Sprite::createWithSpriteFrameName(spritePath);
+    if(!region) {
+        return NULL;
+    }
+    const Size& regionSize = region->getContentSize();
+    const V3F_C4B_T2F_Quad spriteQuad = region->getQuad();
+	//AtlasRegion &region = *regionP;
 
 	RegionAttachment *attachmentP = new(__FILE__, __LINE__) RegionAttachment(name);
 
 	RegionAttachment &attachment = *attachmentP;
 	attachment.setRendererObject(regionP);
-	attachment.setUVs(region.u, region.v, region.u2, region.v2, region.rotate);
-	attachment._regionOffsetX = region.offsetX;
-	attachment._regionOffsetY = region.offsetY;
-	attachment._regionWidth = (float)region.width;
-	attachment._regionHeight = (float)region.height;
-	attachment._regionOriginalWidth = (float)region.originalWidth;
-	attachment._regionOriginalHeight = (float)region.originalHeight;
+	attachment.setUVs(spriteQuad.bl.texCoords.u, spriteQuad.tr.texCoords.v, spriteQuad.tr.texCoords.u, spriteQuad.bl.texCoords.v, 0);
+	attachment._regionOffsetX = 0;
+	attachment._regionOffsetY = 0;
+	attachment._regionWidth = (float)regionSize.width;
+	attachment._regionHeight = (float)regionSize.height;
+	attachment._regionOriginalWidth = (float)regionSize.width;
+	attachment._regionOriginalHeight = (float)regionSize.height;
 	return attachmentP;
 }
 
 MeshAttachment *AtlasAttachmentLoader::newMeshAttachment(Skin &skin, const String &name, const String &path) {
 	SP_UNUSED(skin);
 
-	AtlasRegion *regionP = findRegion(path);
-	if (!regionP) return NULL;
-
-	AtlasRegion &region = *regionP;
+	//AtlasRegion *regionP = findRegion(path);
+	//if (!regionP) return NULL;
+    std::string spritePath = std::string(path.buffer()) + ".png";
+    Sprite* region = Sprite::createWithSpriteFrameName(spritePath);
+    if(!region) {
+        return NULL;
+    }
+    const Size& regionSize = region->getContentSize();
+    const V3F_C4B_T2F_Quad spriteQuad = region->getQuad();
+	//AtlasRegion &region = *regionP;
 
 	MeshAttachment *attachmentP = new(__FILE__, __LINE__) MeshAttachment(name);
 
 	MeshAttachment &attachment = *attachmentP;
-	attachment.setRendererObject(regionP);
-	attachment._regionU = region.u;
-	attachment._regionV = region.v;
-	attachment._regionU2 = region.u2;
-	attachment._regionV2 = region.v2;
-	attachment._regionRotate = region.rotate;
-	attachment._regionDegrees = region.degrees;
-	attachment._regionOffsetX = region.offsetX;
-	attachment._regionOffsetY = region.offsetY;
-	attachment._regionWidth = (float)region.width;
-	attachment._regionHeight = (float)region.height;
-	attachment._regionOriginalWidth = (float)region.originalWidth;
-	attachment._regionOriginalHeight = (float)region.originalHeight;
+	attachment.setRendererObject(region);
+	attachment._regionU = spriteQuad.bl.texCoords.u;
+	attachment._regionV = spriteQuad.tr.texCoords.v;
+	attachment._regionU2 = spriteQuad.tr.texCoords.u;
+	attachment._regionV2 =spriteQuad.bl.texCoords.v;
+	attachment._regionRotate = 0;
+	attachment._regionOffsetX = region->getOffsetPosition().x;
+	attachment._regionOffsetY = region->getOffsetPosition().y;
+	attachment._regionWidth = (float)regionSize.width;
+	attachment._regionHeight = (float)regionSize.height;
+	attachment._regionOriginalWidth = (float)regionSize.width;
+	attachment._regionOriginalHeight = (float)regionSize.height;
 
 	return attachmentP;
 }

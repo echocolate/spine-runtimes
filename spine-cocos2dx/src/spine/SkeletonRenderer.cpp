@@ -199,8 +199,8 @@ namespace spine {
 	}
 
 	void SkeletonRenderer::initWithJsonFile (const std::string& skeletonDataFile, const std::string& atlasFile, float scale) {
-		_atlas = new (__FILE__, __LINE__) Atlas(atlasFile.c_str(), &textureLoader, true);
-		CCASSERT(_atlas, "Error reading atlas file.");
+		//_atlas = new (__FILE__, __LINE__) Atlas(atlasFile.c_str(), &textureLoader, true);
+		//CCASSERT(_atlas, "Error reading atlas file.");
 
 		_attachmentLoader = new (__FILE__, __LINE__) Cocos2dAtlasAttachmentLoader(_atlas);
 
@@ -217,8 +217,8 @@ namespace spine {
 	}
 
 	void SkeletonRenderer::initWithBinaryFile (const std::string& skeletonDataFile, Atlas* atlas, float scale) {
-		_atlas = atlas;
-		_attachmentLoader = new (__FILE__, __LINE__) Cocos2dAtlasAttachmentLoader(_atlas);
+		//_atlas = atlas;
+		//_attachmentLoader = new (__FILE__, __LINE__) Cocos2dAtlasAttachmentLoader(_atlas);
 
 		SkeletonBinary binary(_attachmentLoader);
 		binary.setScale(scale);
@@ -231,8 +231,8 @@ namespace spine {
 	}
 
 	void SkeletonRenderer::initWithBinaryFile (const std::string& skeletonDataFile, const std::string& atlasFile, float scale) {
-		_atlas = new (__FILE__, __LINE__) Atlas(atlasFile.c_str(), &textureLoader, true);
-		CCASSERT(_atlas, "Error reading atlas file.");
+		//_atlas = new (__FILE__, __LINE__) Atlas(atlasFile.c_str(), &textureLoader, true);
+		//CCASSERT(_atlas, "Error reading atlas file.");
 
 		_attachmentLoader = new (__FILE__, __LINE__) Cocos2dAtlasAttachmentLoader(_atlas);
 
