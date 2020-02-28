@@ -33,6 +33,7 @@
 
 #include <spine/Animation.h>
 #include <spine/Timeline.h>
+#include <spine/EventTimeline.h>
 #include <spine/Skeleton.h>
 #include <spine/Event.h>
 
@@ -89,6 +90,25 @@ float Animation::getDuration() {
 
 void Animation::setDuration(float inValue) {
 	_duration = inValue;
+}
+
+float Animation::getEventTime(const String& eventName) {
+    size_t i = 0;
+    size_t timelinesCount = _timelines.size();
+    for (; i < timelinesCount; ++i) {
+        Timeline *timeline = _timelines[i];
+        if(timeline->getRTTI().isExactly(EventTimeline::rtti)) {
+            EventTimeline *ptimeline = (EventTimeline *)timeline;
+            Vector<Event*> &_events = ptimeline->getEvents();
+            for(int i=0; i<_events.size();i++) {
+                Event *e = _events[i];
+                if(e->getEventName() == "fx") {
+                    return e->getTime();
+                }
+            }
+        }
+    }
+    return 0.f;
 }
 
 int Animation::binarySearch(Vector<float> &values, float target, int step) {

@@ -101,7 +101,7 @@ public:
 
 	void setDuration(float inValue);
 
-
+    float getEventTime(const String& eventName);
 
 private:
 	Vector<Timeline *> _timelines;

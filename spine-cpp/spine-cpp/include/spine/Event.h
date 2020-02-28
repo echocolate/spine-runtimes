@@ -49,6 +49,7 @@ public:
 
 	const EventData &getData();
 
+    const String &getEventName();
 	/// The animation time this event was keyed.
 	float getTime();
 

@@ -39,6 +39,11 @@ Scene* CoinExample::scene () {
 	return scene;
 }
 
+void myListener(TrackEntry* entry, spine::Event* event) {
+    //if (event->getData().getName() == "audio")
+    printf("-----event:%s\n", event->getData().getName().buffer());
+}
+
 bool CoinExample::init () {
 	if (!LayerColor::initWithColor(Color4B(128, 128, 128, 255))) return false;
 
@@ -56,14 +61,14 @@ bool CoinExample::init () {
 //    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_fight_common_2.plist");
 //    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("spine_common.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("cha_1649.plist");
-    skeletonNode = SkeletonAnimation::createWithJsonFile("cha_1649.json", "", 1.0f);
+    skeletonNode = SkeletonAnimation::createWithJsonFile("cha_1649.json", "", 0.5f);
     int sh = skeletonNode->getBoundingBox().size.height;
     
     skeletonNode->setAnimation(0, "stand", false);
     //skeletonNode->addAnimation(0, "attack", true, 0);
-	skeletonNode->setPosition(Vec2(_contentSize.width / 2, _contentSize.height / 2- sh/2));
+	skeletonNode->setPosition(Vec2(_contentSize.width / 4, _contentSize.height / 2- sh/2));
 	addChild(skeletonNode);
-    //skeletonNode->scheduleUpdate();
+    skeletonNode->scheduleUpdate();
     
     std::vector<std::string> anims = {
         "stand", "attack", "hurt", "dead"
@@ -72,11 +77,30 @@ bool CoinExample::init () {
         skeletonNode->addAnimation(0, anims[i%4], true, 0);
     }
     
-    Sprite *sp = Sprite::createWithSpriteFrameName("cha_1649/head.png");
-    sp->setPosition(Vec2(80, 150));
-//    sp->setFlippedX(true);
-//    sp->setRotation(100);
-    addChild(sp);
+//    skeletonNode2 = SkeletonAnimation::createWithJsonFile("cha_1649.json", "", 0.5f);
+//    skeletonNode2->setAnimation(0, "dead", false);
+//    curr_time = skeletonNode2->findAnimation("dead")->getDuration();
+//    skeletonNode2->update(curr_time);
+//    skeletonNode2->setPosition(Vec2(_contentSize.width * 3 / 4, _contentSize.height / 2- sh/2));
+//    addChild(skeletonNode2);
+//    TrackEntry* entry = skeletonNode2->addAnimation(0, "stand", true, 0);
+//    entry->setMixTime(0.2f);
+    //skeletonNode2->scheduleUpdate();
+    
+    
+    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("huahua.plist");
+    skeletonNode3 = SkeletonAnimation::createWithJsonFile("hua_12.json", "", 0.5f);
+    TrackEntry* track = skeletonNode3->setAnimation(0, "animation2", true);
+    skeletonNode3->setPosition(Vec2(_contentSize.width * 3 / 4, _contentSize.height / 2));
+    addChild(skeletonNode3);
+    
+    skeletonNode3->setEventListener(myListener);
+    skeletonNode3->scheduleUpdate();
+    
+    float etime = skeletonNode3->findAnimation("animation2")->getEventTime("fx");
+    printf("-----------event fx time:%f\n", etime);
+    
     
 //    skeletonNode2->setAnimation(0, "animation2", true);
 //    skeletonNode2->update(1.0);
@@ -99,11 +123,28 @@ bool CoinExample::init () {
 			skeletonNode->setDebugBonesEnabled(true);
 		else if (skeletonNode->getTimeScale() == 1)
 			skeletonNode->setTimeScale(0.3f);
-		else
+        else {
 			//Director::getInstance()->replaceScene(MixAndMatchExample::scene());
+        }
+        skeletonNode3->setSkin("black");
 		return true;
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
 	return true;
+}
+void CoinExample::update(float delta) {
+    if(!skeletonNode2) return;
+    float anim_time = skeletonNode2->findAnimation("dead")->getDuration();
+    curr_time -= delta;
+    if(curr_time<0.0f) {
+        curr_time += anim_time;
+        //skeletonNode2->getCurrent()->setTrackTime(curr_time);
+    }else if(curr_time >= anim_time) {
+        curr_time -= anim_time;
+        //skeletonNode2->getCurrent()->setTrackTime(curr_time);
+    }
+    skeletonNode2->getCurrent()->setTrackTime(0);
+    skeletonNode2->update(curr_time);
+    //printf("-------2 time:%f delta:%f", curr_time, delta);
 }

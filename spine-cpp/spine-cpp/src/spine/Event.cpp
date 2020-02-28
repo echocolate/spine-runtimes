@@ -69,6 +69,10 @@ void spine::Event::setFloatValue(float inValue) {
 	_floatValue = inValue;
 }
 
+const spine::String &spine::Event::getEventName() {
+    return _data.getName();
+}
+
 const spine::String &spine::Event::getStringValue() {
 	return _stringValue;
 }

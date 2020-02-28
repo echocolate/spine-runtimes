@@ -40,9 +40,14 @@ public:
 	CREATE_FUNC(CoinExample);
 
 	virtual bool init ();
+    
+    virtual void update(float delta);
 
 private:
 	spine::SkeletonAnimation* skeletonNode;
+    spine::SkeletonAnimation* skeletonNode2;
+    spine::SkeletonAnimation* skeletonNode3;
+    float curr_time = 0.0f;
 };
 
 #endif // _COINXAMPLE_H_

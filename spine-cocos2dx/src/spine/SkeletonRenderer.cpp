@@ -878,7 +878,7 @@ namespace spine {
 		if (_scriptType == kScriptTypeJavascript && ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnEnter)) return;
 #endif
 		Node::onEnter();
-		scheduleUpdate();
+		//scheduleUpdate();
 	}
 
 	void SkeletonRenderer::onExit () {
