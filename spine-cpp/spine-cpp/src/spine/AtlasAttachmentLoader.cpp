@@ -68,7 +68,9 @@ RegionAttachment *AtlasAttachmentLoader::newRegionAttachment(Skin &skin, const S
 
 	RegionAttachment &attachment = *attachmentP;
 	attachment.setRendererObject(region);
-	attachment.setUVs(spriteQuad.bl.texCoords.u, spriteQuad.tr.texCoords.v, spriteQuad.tr.texCoords.u, spriteQuad.bl.texCoords.v, 0);
+	attachment.setUVs(spriteQuad.bl.texCoords.u, spriteQuad.tr.texCoords.v, spriteQuad.tr.texCoords.u, spriteQuad.bl.texCoords.v, region->isTextureRectRotated());
+    //attachment.setUVs(spriteQuad.bl.texCoords.u, spriteQuad.tr.texCoords.v, spriteQuad.tr.texCoords.u, spriteQuad.bl.texCoords.v, 0);
+
 	attachment._regionOffsetX = 0;
 	attachment._regionOffsetY = 0;
 	attachment._regionWidth = (float)regionSize.width;
@@ -100,7 +102,14 @@ MeshAttachment *AtlasAttachmentLoader::newMeshAttachment(Skin &skin, const Strin
 	attachment._regionV = spriteQuad.tr.texCoords.v;
 	attachment._regionU2 = spriteQuad.tr.texCoords.u;
 	attachment._regionV2 =spriteQuad.bl.texCoords.v;
-	attachment._regionRotate = 0;
+    attachment._regionRotate = region->isTextureRectRotated();
+    if(attachment._regionRotate) {
+        attachment._regionU = spriteQuad.tr.texCoords.u;
+        attachment._regionV = spriteQuad.tr.texCoords.v;
+        attachment._regionU2 = spriteQuad.bl.texCoords.u;
+        attachment._regionV2 =spriteQuad.bl.texCoords.v;
+        attachment._regionDegrees = 90;
+    }
 	attachment._regionOffsetX = region->getOffsetPosition().x;
 	attachment._regionOffsetY = region->getOffsetPosition().y;
 	attachment._regionWidth = (float)regionSize.width;

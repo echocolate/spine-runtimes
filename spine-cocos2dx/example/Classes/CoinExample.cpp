@@ -59,11 +59,18 @@ bool CoinExample::init () {
     skeletonNode = SkeletonAnimation::createWithJsonFile("cha_1649.json", "", 1.0f);
     int sh = skeletonNode->getBoundingBox().size.height;
     
-    skeletonNode->setAnimation(0, "stand", true);
+    skeletonNode->setAnimation(0, "stand", false);
     //skeletonNode->addAnimation(0, "attack", true, 0);
 	skeletonNode->setPosition(Vec2(_contentSize.width / 2, _contentSize.height / 2- sh/2));
 	addChild(skeletonNode);
     //skeletonNode->scheduleUpdate();
+    
+    std::vector<std::string> anims = {
+        "stand", "attack", "hurt", "dead"
+    };
+    for(int i=0;i<40;i++) {
+        skeletonNode->addAnimation(0, anims[i%4], true, 0);
+    }
     
     Sprite *sp = Sprite::createWithSpriteFrameName("cha_1649/head.png");
     sp->setPosition(Vec2(80, 150));
@@ -93,7 +100,7 @@ bool CoinExample::init () {
 		else if (skeletonNode->getTimeScale() == 1)
 			skeletonNode->setTimeScale(0.3f);
 		else
-			Director::getInstance()->replaceScene(MixAndMatchExample::scene());
+			//Director::getInstance()->replaceScene(MixAndMatchExample::scene());
 		return true;
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
