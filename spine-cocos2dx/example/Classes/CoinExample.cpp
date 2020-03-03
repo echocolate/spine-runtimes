@@ -90,16 +90,33 @@ bool CoinExample::init () {
     
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("huahua.plist");
-    skeletonNode3 = SkeletonAnimation::createWithJsonFile("hua_12.json", "", 0.5f);
-    TrackEntry* track = skeletonNode3->setAnimation(0, "animation2", true);
+    skeletonNode3 = SkeletonAnimation::createWithJsonFile("hua_13.json", "", 0.5f);
+    //TrackEntry* track = skeletonNode3->setAnimation(0, "animation2", true);
+//    float etime = skeletonNode3->findAnimation("animation2")->getEventTime("fx");
+//    printf("-----------event fx time:%f\n", etime);
     skeletonNode3->setPosition(Vec2(_contentSize.width * 3 / 4, _contentSize.height / 2));
     addChild(skeletonNode3);
+    
+    Rect rect = skeletonNode3->getSkeleton()->getAabbBoundingBox();
+    auto dn = DrawNode::create();
+    Vec2 p1 = rect.origin;
+    Vec2 p2 = Vec2(rect.getMaxX(), rect.getMaxY());
+    p1 = skeletonNode3->convertToWorldSpace(p1);
+    p2 = skeletonNode3->convertToWorldSpace(p2);
+    dn->drawRect(p1, p2, Color4F(1.0,0,0,1.0));
+    addChild(dn);
+    auto dn2 = DrawNode::create();
+    Rect rect2 = skeletonNode3->getAabbBoundingBox();
+    //rect2.origin = skeletonNode3->convertToWorldSpace(rect2.origin);
+    dn2->drawRect(rect2.origin, Vec2(rect2.getMaxX(),rect2.getMaxY()), Color4F(0,1.0,0,1.0));
+    addChild(dn2);
+    
+    skeletonNode3->setAttachment(<#const std::string &slotName#>, <#const std::string &attachmentName#>)
     
     skeletonNode3->setEventListener(myListener);
     skeletonNode3->scheduleUpdate();
     
-    float etime = skeletonNode3->findAnimation("animation2")->getEventTime("fx");
-    printf("-----------event fx time:%f\n", etime);
+    
     
     
 //    skeletonNode2->setAnimation(0, "animation2", true);

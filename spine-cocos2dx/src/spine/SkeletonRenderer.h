@@ -49,6 +49,7 @@ namespace spine {
 		void update (float deltaTime) override;
 		void draw (cocos2d::Renderer* renderer, const cocos2d::Mat4& transform, uint32_t transformFlags) override;
 		cocos2d::Rect getBoundingBox () const override;
+        cocos2d::Rect getAabbBoundingBox();
 		void onEnter () override;
 		void onExit () override;
 

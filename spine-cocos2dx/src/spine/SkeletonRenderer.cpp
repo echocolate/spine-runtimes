@@ -764,6 +764,12 @@ namespace spine {
 		return bb;
 	}
 
+    cocos2d::Rect SkeletonRenderer::getAabbBoundingBox() {
+        cocos2d::Rect bb = getSkeleton()->getAabbBoundingBox();
+        bb.origin = convertToWorldSpace(bb.origin);
+        return bb;
+    }
+
 	// --- Convenience methods for Skeleton_* functions.
 
 	void SkeletonRenderer::updateWorldTransform() {

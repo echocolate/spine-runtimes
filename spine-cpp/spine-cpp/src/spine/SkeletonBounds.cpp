@@ -190,6 +190,10 @@ spine::Polygon *SkeletonBounds::getPolygon(BoundingBoxAttachment *attachment) {
 	return index == -1 ? NULL : _polygons[index];
 }
 
+cocos2d::Rect SkeletonBounds::getAabbBoundingBox() {
+    return cocos2d::Rect(_minX, _minY, _maxX-_minX, _maxY-_minY);
+}
+
 float SkeletonBounds::getWidth() {
 	return _maxX - _minX;
 }
@@ -199,10 +203,10 @@ float SkeletonBounds::getHeight() {
 }
 
 void SkeletonBounds::aabbCompute() {
-	float minX = FLT_MIN;
-	float minY = FLT_MIN;
-	float maxX = FLT_MAX;
-	float maxY = FLT_MAX;
+	float minX = FLT_MAX;
+	float minY = FLT_MAX;
+	float maxX = FLT_MIN;
+	float maxY = FLT_MIN;
 
 	for (size_t i = 0, n = _polygons.size(); i < n; ++i) {
 		spine::Polygon *polygon = _polygons[i];

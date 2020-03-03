@@ -32,7 +32,7 @@
 #endif
 
 #include <spine/Skeleton.h>
-
+#include <spine/SkeletonBounds.h>
 #include <spine/SkeletonData.h>
 #include <spine/Bone.h>
 #include <spine/Slot.h>
@@ -461,6 +461,14 @@ void Skeleton::getBounds(float &outX, float &outY, float &outWidth, float &outHe
 	outY = minY;
 	outWidth = maxX - minX;
 	outHeight = maxY - minY;
+}
+
+cocos2d::Rect Skeleton::getAabbBoundingBox() {
+    auto *bounds = new SkeletonBounds();
+    bounds->update(*this, true);
+    cocos2d::Rect rect = bounds->getAabbBoundingBox();
+    delete bounds;
+    return rect;
 }
 
 Bone *Skeleton::getRootBone() {

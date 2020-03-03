@@ -77,6 +77,8 @@ namespace spine {
 		bool intersectsSegment(Polygon* polygon, float x1, float y1, float x2, float y2);
 
 		Polygon* getPolygon(BoundingBoxAttachment* attachment);
+        
+        cocos2d::Rect getAabbBoundingBox();
 
 		float getWidth();
 		float getHeight();

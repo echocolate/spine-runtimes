@@ -163,6 +163,8 @@ public:
 	/// @param outHeight The height of the AABB.
 	/// @param outVertexBuffer Reference to hold a Vector of floats. This method will assign it with new floats as needed.
 	void getBounds(float &outX, float &outY, float &outWidth, float &outHeight, Vector<float> &outVertexBuffer);
+    
+    cocos2d::Rect getAabbBoundingBox();
 
 	Bone *getRootBone();
 
