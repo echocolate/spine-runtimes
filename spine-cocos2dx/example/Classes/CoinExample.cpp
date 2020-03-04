@@ -113,8 +113,9 @@ bool CoinExample::init () {
     
     Sprite *sp1 = Sprite::createWithSpriteFrameName("cha_1649/head.png");
     skeletonNode3->addChildFollowSlot("code_fx", sp1, true);
-    //sp1->setPosition(10, 10);
-    //skeletonNode3->addChild(sp1);
+    Sprite *sp2 = Sprite::createWithSpriteFrameName("cha_1649/head.png");
+    sp2->setPosition(10, 10);
+    skeletonNode3->addChild(sp2);
     
     skeletonNode3->setEventListener(myListener);
     skeletonNode3->scheduleUpdate();
