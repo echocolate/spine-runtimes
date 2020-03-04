@@ -90,8 +90,8 @@ bool CoinExample::init () {
     
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("huahua.plist");
-    skeletonNode3 = SkeletonAnimation::createWithJsonFile("hua_13.json", "", 0.5f);
-    //TrackEntry* track = skeletonNode3->setAnimation(0, "animation2", true);
+    skeletonNode3 = SkeletonAnimation::createWithJsonFile("hua_14.json", "", 0.5f);
+    TrackEntry* track = skeletonNode3->setAnimation(0, "animation", true);
 //    float etime = skeletonNode3->findAnimation("animation2")->getEventTime("fx");
 //    printf("-----------event fx time:%f\n", etime);
     skeletonNode3->setPosition(Vec2(_contentSize.width * 3 / 4, _contentSize.height / 2));
@@ -111,7 +111,10 @@ bool CoinExample::init () {
     dn2->drawRect(rect2.origin, Vec2(rect2.getMaxX(),rect2.getMaxY()), Color4F(0,1.0,0,1.0));
     addChild(dn2);
     
-    skeletonNode3->setAttachment(<#const std::string &slotName#>, <#const std::string &attachmentName#>)
+    Sprite *sp1 = Sprite::createWithSpriteFrameName("cha_1649/head.png");
+    skeletonNode3->addChildFollowSlot("code_fx", sp1, true);
+    //sp1->setPosition(10, 10);
+    //skeletonNode3->addChild(sp1);
     
     skeletonNode3->setEventListener(myListener);
     skeletonNode3->scheduleUpdate();

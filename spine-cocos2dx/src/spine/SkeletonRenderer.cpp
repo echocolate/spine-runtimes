@@ -303,17 +303,26 @@ namespace spine {
 
 			if (slotIsOutRange(*slot, _startSlotIndex, _endSlotIndex)) {
 				_clipper->clipEnd(*slot);
+                if (slot->updateFollowAttachment()) {
+                    slot->drawFollowAttachment(renderer, transform, transformFlags);
+                }
 				continue;
 			}
 
 			if (!slot->getAttachment()) {
 				_clipper->clipEnd(*slot);
+                if (slot->updateFollowAttachment()) {
+                    slot->drawFollowAttachment(renderer, transform, transformFlags);
+                }
 				continue;
 			}
 
 			// Early exit if slot is invisible
 			if (slot->getColor().a == 0 || !slot->getBone().isActive()) {
 				_clipper->clipEnd(*slot);
+                if (slot->updateFollowAttachment()) {
+                    slot->drawFollowAttachment(renderer, transform, transformFlags);
+                }
 				continue;
 			}
 
@@ -327,6 +336,9 @@ namespace spine {
 				// Early exit if attachment is invisible
 				if (attachment->getColor().a == 0) {
 					_clipper->clipEnd(*slot);
+                    if (slot->updateFollowAttachment()) {
+                        slot->drawFollowAttachment(renderer, transform, transformFlags);
+                    }
 					continue;
 				}
 
@@ -398,9 +410,15 @@ namespace spine {
 			else if (slot->getAttachment()->getRTTI().isExactly(ClippingAttachment::rtti)) {
 				ClippingAttachment* clip = (ClippingAttachment*)slot->getAttachment();
 				_clipper->clipStart(*slot, clip);
+                if (slot->updateFollowAttachment()) {
+                    slot->drawFollowAttachment(renderer, transform, transformFlags);
+                }
 				continue;
 			} else {
 				_clipper->clipEnd(*slot);
+                if (slot->updateFollowAttachment()) {
+                    slot->drawFollowAttachment(renderer, transform, transformFlags);
+                }
 				continue;
 			}
 
@@ -417,6 +435,9 @@ namespace spine {
 			// skip rendering if the color of this attachment is 0
 			if (color.a == 0){
 			_clipper->clipEnd(*slot);
+                if (slot->updateFollowAttachment()) {
+                    slot->drawFollowAttachment(renderer, transform, transformFlags);
+                }
 				continue;
 			}
 			color.r *= nodeColor.r * _skeleton->getColor().r * slot->getColor().r;
@@ -441,6 +462,9 @@ namespace spine {
 
 					if (_clipper->getClippedTriangles().size() == 0){
 						_clipper->clipEnd(*slot);
+                        if (slot->updateFollowAttachment()) {
+                            slot->drawFollowAttachment(renderer, transform, transformFlags);
+                        }
 						continue;
 					}
 
@@ -513,6 +537,9 @@ namespace spine {
 
 					if (_clipper->getClippedTriangles().size() == 0){
 						_clipper->clipEnd(*slot);
+                        if (slot->updateFollowAttachment()) {
+                            slot->drawFollowAttachment(renderer, transform, transformFlags);
+                        }
 						continue;
 					}
 
@@ -582,6 +609,9 @@ namespace spine {
 				}
 			}
 			_clipper->clipEnd(*slot);
+            if (slot->updateFollowAttachment()) {
+                slot->drawFollowAttachment(renderer, transform, transformFlags);
+            }
 		}
 		_clipper->clipEnd();
 
@@ -912,6 +942,42 @@ namespace spine {
 	bool SkeletonRenderer::isOpacityModifyRGB () const {
 		return _premultipliedAlpha;
 	}
+
+
+void SkeletonRenderer::addChildFollowSlot(const char *slotName, Node *child, bool enabledFollowColor) {
+    Slot* slot = getSkeleton()->findSlot(slotName);
+    if (slot) {
+        if (!child->getParent())
+        {
+            Node* virNode = Node::create();
+            this->addChild(virNode, child->getLocalZOrder(), child->getTag());
+            virNode->addChild(child);
+            
+            slot->addFollowAttachment(virNode, enabledFollowColor);
+//            m_slotFollowAttachmentSet.insert(virNode);
+        }
+        else
+        {
+            slot->addFollowAttachment(child, enabledFollowColor);
+//            m_slotFollowAttachmentSet.insert(child);
+        }
+    }
+}
+
+void SkeletonRenderer::removeChildFollowSlot(const char *slotName) {
+    Slot* slot =getSkeleton()->findSlot(slotName);
+    if (slot) {
+        slot->removeFollowAttachment();
+    }
+}
+
+Node* SkeletonRenderer::getChildFollowSlot(const char *slotName) {
+    Slot* slot =getSkeleton()->findSlot(slotName);
+    if (slot) {
+        return slot->getFollowAttachmentChild();
+    }
+    return nullptr;
+}
 
 	namespace {
 		cocos2d::Rect computeBoundingRect(const float* coords, int vertexCount) {

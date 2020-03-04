@@ -108,6 +108,18 @@ public:
 
 	Vector<float> &getDeform();
 
+    void addFollowAttachment(cocos2d::Node* attachment, bool enabledFollowColor);
+    
+    void removeFollowAttachment();
+    
+    cocos2d::Node* getFollowAttachmentChild();
+    
+    bool isEnabledFollowAttachment();
+    
+    bool updateFollowAttachment();
+    
+    void drawFollowAttachment(cocos2d::Renderer *renderer, const cocos2d::Mat4& transform, uint32_t flags);
+    
 private:
 	SlotData &_data;
 	Bone &_bone;
@@ -118,6 +130,14 @@ private:
 	Attachment *_attachment;
 	float _attachmentTime;
 	Vector<float> _deform;
+    
+    //followSlot
+    cocos2d::Node* m_followAttachment; //virtualNode
+    bool m_enabledFollowColor;
+    cocos2d::Color3B m_followAttachmentColor;
+    GLubyte m_followAttachmentOpacity;
+    float m_followAttachmentScaleX;
+    float m_followAttachmentScaleY;
 };
 }
 

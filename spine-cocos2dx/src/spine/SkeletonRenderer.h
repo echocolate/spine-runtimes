@@ -114,6 +114,11 @@ namespace spine {
 		const cocos2d::BlendFunc& getBlendFunc () const override;
 		void setOpacityModifyRGB (bool value) override;
 		bool isOpacityModifyRGB () const override;
+        
+        void addChildFollowSlot(const char* slotName, Node* child, bool enabledFollowColor = true);
+        void removeChildFollowSlot(const char* slotName);
+        Node* getChildFollowSlot(const char* slotName);
+        //void removeSlotFollowAttachment(Node* followAttachment);
 
 	CC_CONSTRUCTOR_ACCESS:
 		SkeletonRenderer ();

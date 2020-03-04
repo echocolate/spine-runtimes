@@ -113,3 +113,112 @@ void Slot::setAttachmentTime(float inValue) {
 Vector<float> &Slot::getDeform() {
 	return _deform;
 }
+
+void Slot::addFollowAttachment(cocos2d::Node *attachment, bool enabledFollowColor) {
+    removeFollowAttachment();
+    m_followAttachment = attachment;
+    m_followAttachment->retain();
+    m_enabledFollowColor = enabledFollowColor;
+    
+    m_followAttachmentColor = attachment->getColor();
+    m_followAttachmentOpacity = attachment->getOpacity();
+    m_followAttachment->setColor(m_followAttachmentColor);
+    m_followAttachment->setOpacity(m_followAttachmentOpacity);
+    m_followAttachmentScaleX = attachment->getScaleX();
+    m_followAttachmentScaleY = attachment->getScaleY();
+}
+
+void Slot::removeFollowAttachment() {
+    if (m_followAttachment) {
+        //m_skeleton->removeSlotFollowAttachment(m_followAttachment);
+        m_followAttachment->removeFromParent();
+        m_followAttachment->release();
+        m_followAttachment = nullptr;
+    }
+}
+
+cocos2d::Node* Slot::getFollowAttachmentChild() {
+    return m_followAttachment;
+}
+
+bool Slot::isEnabledFollowAttachment() {
+    return m_followAttachment != nullptr;
+}
+
+bool Slot::updateFollowAttachment() {
+    if (m_followAttachment){
+        //    if (m_followAttachment && m_followAttachment->getOpacity() > 0) {
+        //        if (m_followAttachment->getParent() && m_followAttachment->getChildrenCount()) {
+        //            Vector<Node*>&  children = m_followAttachment->getChildren();
+        //            Node* actualNode = children.at(0);
+        cocos2d::Node* actualNode = m_followAttachment;
+        Bone& bbone = getBone();
+        Bone* bone = &bbone;
+        Skeleton *m_skeleton = &_skeleton;
+        
+//        if (m_skeleton->isFlipX()) {
+//            m_followAttachment->setPositionX(-bone->getWorldX());
+//        }
+//        else {
+            m_followAttachment->setPositionX(bone->getWorldX());
+//        }
+        
+//        if (m_skeleton->isFlipY()) {
+//            m_followAttachment->setPositionY(-bone->m_worldY);
+//        }
+//        else {
+            m_followAttachment->setPositionY(bone->getWorldY());
+//        }
+        
+        m_followAttachment->setRotationSkewX(-bone->getWorldRotationX());
+        m_followAttachment->setRotationSkewY(-bone->getWorldRotationY());
+        
+        
+        //                    m_followAttachment->setScaleX(bone->m_worldScaleX);
+        //                    m_followAttachment->setScaleY(bone->m_worldScaleY);
+//        m_followAttachment->setScaleX(m_followAttachmentScaleX * bone->m_worldScaleX);
+//        m_followAttachment->setScaleY(m_followAttachmentScaleY * bone->m_worldScaleY);
+        
+        if (m_enabledFollowColor) {
+            if (m_followAttachmentColor != actualNode->getColor()) {
+                m_followAttachment->setColor(actualNode->getColor());
+            }
+            if (m_followAttachmentOpacity != actualNode->getOpacity()) {
+                m_followAttachment->setOpacity(actualNode->getOpacity());
+            }
+            
+            cocos2d::Color3B color = cocos2d::Color3B(255,255,255);//m_followAttachment->getColor();
+            GLubyte opacity = 255;//m_followAttachment->getOpacity();
+            
+            const cocos2d::Color4F& ownerColor = cocos2d::Color4F(m_skeleton->getColor().r, m_skeleton->getColor().g, m_skeleton->getColor().b, m_skeleton->getColor().a);
+//            actualNode->setColor(Color3B(m_cr * ownerColor.r * color.r, m_cg * ownerColor.g * color.g, m_cb * ownerColor.b * color.b));
+//            actualNode->setOpacity(m_ca * ownerColor.a * opacity);
+            
+            m_followAttachmentColor = actualNode->getColor();
+            m_followAttachmentOpacity = actualNode->getOpacity();
+        }
+        
+        return true;
+        //        }
+        //        else {
+        //            removeFollowAttachment();
+        //        }
+    }
+    return false;
+}
+
+void Slot::drawFollowAttachment(cocos2d::Renderer *renderer, const cocos2d::Mat4& transform, uint32_t flags) {
+    if (m_followAttachment->getOpacity() > 0) {
+        Bone& bbone = getBone();
+        Bone* bone = &bbone;
+        float sx = m_followAttachment->getScaleX();
+        float sy = m_followAttachment->getScaleY();
+        m_followAttachment->setScaleX(sx * bone->getWorldScaleX());
+        m_followAttachment->setScaleY(sy * bone->getWorldScaleY());
+        m_followAttachment->setLocalZOrder(100);
+        //m_followAttachment->setPosition(10, 10);
+        m_followAttachment->visit(renderer, transform, flags);
+        m_followAttachment->setScaleX(sx);
+        m_followAttachment->setScaleY(sy);
+    }
+}
